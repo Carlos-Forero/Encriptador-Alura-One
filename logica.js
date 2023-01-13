@@ -1,21 +1,35 @@
 
 function encriptar(){
-
-    if (document.getElementById('ingresaTexto').value.length>0){
+    var t1=document.getElementById('ingresaTexto').value;
+    var tamano=document.getElementById('ingresaTexto').value.length;
+    var t;
+    if (tamano>0){
+         t=(document.getElementById('ingresaTexto2').value=t1);
+        var borrar='';
+        document.getElementById('ingresaTexto').value=borrar;
+    }
+     t=document.getElementById('ingresaTexto2').value;
+    var tamano2=document.getElementById('ingresaTexto2').value.length;
+    
+    
+    if(tamano==0 && tamano2==0){
+        document.getElementById('textoSalida').value = '';
+    }
+    if (tamano2>0){
         //document.write("hay texto")
         /* let t=document.getElementById('ingresaTexto') */
+     
         
-        var t=document.getElementById('ingresaTexto').value;
         if (/[A-Z]/g.test(t)||/[áéíóúÁÉÍÓÚ]/g.test(t)){
             console.log("A incertado mayusculas");
             alert("Recuerde solo ingresar texto en minuscula y sin acentos");
         }else{
 
-        var tamano=document.getElementById('ingresaTexto').value.length;
-        t=t.replace(/\n/g, "<br>");
+       
+        //t=t.replace(/\n/g, "<br>");
         var letra=t.split("");
         console.log(tamano);
-        for (var i=0;i<tamano;i++){
+        for (var i=0;i<tamano2;i++){
             if (letra[i]=="a"){
                 letra[i] = "ai";
                 console.log(letra[i]);
@@ -38,25 +52,41 @@ function encriptar(){
             }
         }
         var nt=letra.join("");
-        document.getElementById('textoSalida').innerHTML = nt;
+        document.getElementById('textoSalida').value = nt;
         }
     }
 }
 function desencriptar(){
-    if (document.getElementById('ingresaTexto').value.length>0){
+
+    var t1=document.getElementById('ingresaTexto').value;
+    var tamano=document.getElementById('ingresaTexto').value.length;
+    var t;
+    if (tamano>0){
+         t=(document.getElementById('ingresaTexto2').value=t1);
+        var borrar='';
+        document.getElementById('ingresaTexto').value=borrar;
+    }
+     t=document.getElementById('ingresaTexto2').value;
+    var tamano2=document.getElementById('ingresaTexto2').value.length;
+    
+    
+    if(tamano==0 && tamano2==0){
+        document.getElementById('textoSalida').value = '';
+    }
+    if (tamano2>0){
         //document.write("hay texto")
         /* let t=document.getElementById('ingresaTexto') */
         
-        var t=document.getElementById('ingresaTexto').value;
+    
         if (/[A-Z]/g.test(t)||/[áéíóúÁÉÍÓÚ]/g.test(t)){
             console.log("A incertado mayusculas");
             alert("Recuerde solo ingresar texto en minuscula y sin acentos");
         }else{
 
-        var tamano=document.getElementById('ingresaTexto').value.length;
+       
        // document.getElementById('ingresaTexto').textContent = t.replace(/\n/g, "<br>")
        // t=t.replace(/\n/g, "<br>");
-        var nt= t.replace(/ai/g,"a").replace(/enter/g,"e").replace(/imes/g,"i").replace(/ober/g,"o").replace(/ufat/g,"u").replace(/\n/g, "<br>");
+        var nt= t.replace(/ai/g,"a").replace(/enter/g,"e").replace(/imes/g,"i").replace(/ober/g,"o").replace(/ufat/g,"u");
         //var posicion=t.indexOf("enter");
        // 
         
@@ -66,7 +96,7 @@ function desencriptar(){
             posicion=t.indexOf("enter");
         } */
        
-        document.getElementById('textoSalida').innerHTML = nt;
+        document.getElementById('textoSalida').value = nt;
         //document.write(nt);
         }
     }
@@ -75,11 +105,16 @@ function copiar(Copia){
       // Crea un campo de texto "oculto", este por un textarea
 
   var aux = document.createElement("textarea");
+/*
+    var t=document.getElementById('textoSalida').value;
+    t=t.replace(/<br>/g, "\n");
+    document.getElementById('textoSalida').innerHTML=t;
+*/
 
   // Asigna el contenido del elemento especificado al valor del campo
   // este para vaciar el contenido
 
-  aux.innerHTML = document.getElementById('textoSalida').innerHTML
+  aux.innerHTML = document.getElementById('textoSalida').value
 
   // Añade el campo a la página
   document.body.appendChild(aux);
@@ -100,8 +135,35 @@ function ocultarMuneco(){
     
     document.getElementById('rectangulo').style.display ='none';
     document.getElementById('rectangulo2').style.display ='flex';
+    //document.getElementById('ingresaTexto').style.height ='288px';
+    document.getElementById('ingresaTexto').style.display ='none';
+    document.getElementById('ingresaTexto2').style.display ='flex';
+    let tamVentana=window.screen.availWidth;
+    if(tamVentana <= 375){
+    document.querySelector('.botones').style.top = '874px';
+    document.querySelector('.instruccion').style.top ='840px';
+    console.log('Movil');
+    }
+    if(tamVentana > 375 && tamVentana < 768){
+    document.querySelector('.botones').style.top = '870px';
+    document.querySelector('.instruccion').style.top ='836px';
+    console.log('Tablet');
+    }
+    if(tamVentana >= 769){
+    document.querySelector('.botones').style.top = '885px';
+    document.querySelector('.instruccion').style.top ='851px';
+    console.log('PC');
+    }
+    
+}
+/*
+if(window.screen.availWidth == 500){
+    document.getElementById('ingresaTexto').style.background ='pink';
     console.log("esta en zona");
 }
+*/
+
+
 
 /* REGLAS:
 La letra "e" es convertida para "enter"

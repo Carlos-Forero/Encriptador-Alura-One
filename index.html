@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Encriptador</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<header>
+    <a href="index.html" class="logo">
+        <img src="img/Logo.svg">
+    </a>
+</header>
 <body>
-
+    
+    
     <div>
         <textarea id="ingresaTexto" placeholder="Ingresa aqui el texto a Encriptar o desencriptar"></textarea>
     </div>
     
-    <a href="http://127.0.0.1:5500/cafp/index.html" class="logo">
-        <img src="img/Logo.png">
-    </a>
+    <div>
+        <textarea id="ingresaTexto2" placeholder="Ingresa aqui el texto "></textarea>
+    </div>
+
+    
     <div id="rectangulo">
 
         <div id="muneco">
@@ -26,8 +35,8 @@
 
     </div>
     <div id="rectangulo2">
-        <div id="textoSalida">
-
+        <div >
+            <textarea id="textoSalida"></textarea>
             
         </div>
         <button class="copiar" onclick="copiar()">Copiar</button>
@@ -38,9 +47,9 @@
         <p>	&#9888 solo letras minusculas y sin acentos</p>
     </div>
     <div class="botones">
-        <button class="botonEnc" onclick="ocultarMuneco(),encriptar()">ENC</button>
+        <button class="botonEnc" onclick="ocultarMuneco(),encriptar()">ENCRIPTAR</button>
         
-        <button class="botonDec" onclick="ocultarMuneco(),desencriptar()">DEC</button>
+        <button class="botonDec" onclick="ocultarMuneco(),desencriptar()">DESENCRIPTAR</button>
     </div>
     <script src="logica.js"></script>
 </body>
